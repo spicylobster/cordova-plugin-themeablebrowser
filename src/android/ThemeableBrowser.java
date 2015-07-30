@@ -920,17 +920,17 @@ public class ThemeableBrowser extends CordovaPlugin {
                     // If full screen mode, we have to add inAppWebView before adding toolbar.
                     main.addView(inAppWebView);
                 }
-
+                if (!features.fullscreen) {
+                    // If not full screen, we add inAppWebView before adding toolbar.
+                    main.addView(inAppWebView);
+                }
                 // Don't add the toolbar if its been disabled
                 if (features.location) {
                     // Add our toolbar to our main view/layout
                     main.addView(toolbar);
                 }
 
-                if (!features.fullscreen) {
-                    // If not full screen, we add inAppWebView after adding toolbar.
-                    main.addView(inAppWebView);
-                }
+
 
                 WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
                 lp.copyFrom(dialog.getWindow().getAttributes());
