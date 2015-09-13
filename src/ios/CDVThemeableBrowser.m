@@ -776,7 +776,8 @@
         for (NSDictionary* customButton in [customButtons reverseObjectEnumerator]) {
             UIButton* button = [self createButton:customButton action:@selector(goCustomButton:) withDescription:[NSString stringWithFormat:@"custom button at %ld", (long)cnt]];
             if (button) {
-                button.tag = cnt;
+                // since reverse before
+                button.tag = _browserOptions.customButtons.count - 1 - cnt;
                 CGFloat width = [self getWidthFromButton:button];
                 if ([kThemeableBrowserAlignRight isEqualToString:customButton[kThemeableBrowserPropAlign]]) {
                     [rightButtons addObject:button];
